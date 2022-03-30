@@ -1,6 +1,5 @@
 node_modules
 .serverless
-
-coverage/
+coverage
 .vscode/
 .README.md

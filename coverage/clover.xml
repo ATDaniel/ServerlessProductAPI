@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1648663938767" clover="3.2.0">
-  <project timestamp="1648663938767" name="All files">
+<coverage generated="1648666874990" clover="3.2.0">
+  <project timestamp="1648666874991" name="All files">
     <metrics statements="83" coveredstatements="43" conditionals="23" coveredconditionals="16" methods="10" coveredmethods="6" elements="116" coveredelements="65" complexity="0" loc="83" ncloc="83" packages="1" files="3" classes="3"/>
     <file name="dynamoScanBuilder.js" path="/Users/drew/Projects/litify/litifyAPI/src/dynamoScanBuilder.js">
       <metrics statements="11" coveredstatements="11" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>

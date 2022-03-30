@@ -2,6 +2,10 @@
 
 This is a simple API created using AWS serverless technologies. It supports three endpoints- one for creating new products, reading a single product, and searching products by tags.
 
+The Express server and routes are contained in the `src/handler.js` file and there are two additional files– `src/validate.js` that contains utility functions to enforce a set of rules on Product creation, and `src/dynamoScanBuilder.js` that has two utility functions used in building the search query for the DynamoDB scan.
+
+
+
 ## Technologies Used:
  - NodeJS 14.x
  - ExpressJS
@@ -10,6 +14,13 @@ This is a simple API created using AWS serverless technologies. It supports thre
  - AWS Lambda
  - AWS DynamoBD
  - AWS API Gateway
+
+## Running Test Suite
+There are some simple unit tests written in the `/test` directory. Additionally, there is a script in the `package.json` file that will run the test with coverage details. 
+
+From the root directory, run:
+
+`$ npm run test` 
 
 
 <br/>
