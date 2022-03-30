@@ -1,9 +1,10 @@
 # Serverless Product API
 
-This is a simple API created using AWS serverless technologies. It supports three endpoints- one for creating new products, reading a single product, and searching products by tags.
+This is a simple API created using serverless AWS technologies. It supports three endpoints- one for creating new products, reading a single product, and searching products by tags.
+
+The architecture of this application is very simple. It's a single AWS Lambda function running an Express server, and it makes read and write calls to a DynamoDB table. The lambda is exposed publically through an API Gateway endpoint.
 
 The Express server and routes are contained in the `src/handler.js` file and there are two additional files– `src/validate.js` that contains utility functions to enforce a set of rules on Product creation, and `src/dynamoScanBuilder.js` that has two utility functions used in building the search query for the DynamoDB scan.
-
 
 
 ## Technologies Used:
