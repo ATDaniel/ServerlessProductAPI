@@ -1,0 +1,21 @@
+{
+  "name": "litifyAPI",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "jest",
+    "serve:dev": "serverless offline"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "serverless-http": "^2.7.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "jest": "^27.5.1",
+    "serverless-offline": "^8.5.0"
+  },
+  "jest": {
+    "collectCoverage": true
+  }
+}

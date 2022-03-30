@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1648663938767" clover="3.2.0">
+  <project timestamp="1648663938767" name="All files">
+    <metrics statements="83" coveredstatements="43" conditionals="23" coveredconditionals="16" methods="10" coveredmethods="6" elements="116" coveredelements="65" complexity="0" loc="83" ncloc="83" packages="1" files="3" classes="3"/>
+    <file name="dynamoScanBuilder.js" path="/Users/drew/Projects/litify/litifyAPI/src/dynamoScanBuilder.js">
+      <metrics statements="11" coveredstatements="11" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+      <line num="2" count="2" type="stmt"/>
+      <line num="4" count="2" type="stmt"/>
+      <line num="5" count="6" type="cond" truecount="2" falsecount="0"/>
+      <line num="6" count="4" type="stmt"/>
+      <line num="8" count="2" type="stmt"/>
+      <line num="12" count="2" type="stmt"/>
+      <line num="16" count="2" type="stmt"/>
+      <line num="18" count="2" type="stmt"/>
+      <line num="19" count="6" type="stmt"/>
+      <line num="22" count="2" type="stmt"/>
+      <line num="25" count="2" type="stmt"/>
+    </file>
+    <file name="handler.js" path="/Users/drew/Projects/litify/litifyAPI/src/handler.js">
+      <metrics statements="55" coveredstatements="15" conditionals="6" coveredconditionals="0" methods="4" coveredmethods="0"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="2" count="1" type="stmt"/>
+      <line num="4" count="1" type="stmt"/>
+      <line num="5" count="1" type="stmt"/>
+      <line num="6" count="1" type="stmt"/>
+      <line num="7" count="1" type="stmt"/>
+      <line num="9" count="1" type="stmt"/>
+      <line num="11" count="1" type="stmt"/>
+      <line num="12" count="1" type="stmt"/>
+      <line num="14" count="1" type="stmt"/>
+      <line num="16" count="1" type="stmt"/>
+      <line num="17" count="0" type="stmt"/>
+      <line num="18" count="0" type="stmt"/>
+      <line num="20" count="0" type="stmt"/>
+      <line num="21" count="0" type="stmt"/>
+      <line num="23" count="0" type="cond" truecount="0" falsecount="2"/>
+      <line num="24" count="0" type="stmt"/>
+      <line num="27" count="0" type="stmt"/>
+      <line num="37" count="0" type="stmt"/>
+      <line num="38" count="0" type="stmt"/>
+      <line num="39" count="0" type="stmt"/>
+      <line num="41" count="0" type="stmt"/>
+      <line num="42" count="0" type="stmt"/>
+      <line num="46" count="1" type="stmt"/>
+      <line num="47" count="0" type="stmt"/>
+      <line num="48" count="0" type="stmt"/>
+      <line num="49" count="0" type="stmt"/>
+      <line num="51" count="0" type="stmt"/>
+      <line num="52" count="0" type="stmt"/>
+      <line num="55" count="0" type="stmt"/>
+      <line num="56" count="0" type="stmt"/>
+      <line num="58" count="0" type="stmt"/>
+      <line num="64" count="0" type="stmt"/>
+      <line num="65" count="0" type="stmt"/>
+      <line num="66" count="0" type="stmt"/>
+      <line num="67" count="0" type="stmt"/>
+      <line num="69" count="0" type="cond" truecount="0" falsecount="2"/>
+      <line num="70" count="0" type="stmt"/>
+      <line num="71" count="0" type="stmt"/>
+      <line num="75" count="0" type="stmt"/>
+      <line num="77" count="0" type="stmt"/>
+      <line num="78" count="0" type="stmt"/>
+      <line num="82" count="1" type="stmt"/>
+      <line num="83" count="0" type="stmt"/>
+      <line num="90" count="0" type="stmt"/>
+      <line num="91" count="0" type="stmt"/>
+      <line num="92" count="0" type="cond" truecount="0" falsecount="2"/>
+      <line num="93" count="0" type="stmt"/>
+      <line num="100" count="0" type="stmt"/>
+      <line num="102" count="0" type="stmt"/>
+      <line num="107" count="0" type="stmt"/>
+      <line num="108" count="0" type="stmt"/>
+      <line num="114" count="1" type="stmt"/>
+      <line num="115" count="0" type="stmt"/>
+      <line num="121" count="1" type="stmt"/>
+    </file>
+    <file name="validate.js" path="/Users/drew/Projects/litify/litifyAPI/src/validate.js">
+      <metrics statements="17" coveredstatements="17" conditionals="15" coveredconditionals="14" methods="4" coveredmethods="4"/>
+      <line num="2" count="7" type="cond" truecount="4" falsecount="0"/>
+      <line num="3" count="3" type="stmt"/>
+      <line num="5" count="4" type="stmt"/>
+      <line num="10" count="7" type="cond" truecount="2" falsecount="0"/>
+      <line num="11" count="2" type="stmt"/>
+      <line num="13" count="5" type="stmt"/>
+      <line num="18" count="7" type="cond" truecount="2" falsecount="0"/>
+      <line num="19" count="2" type="stmt"/>
+      <line num="22" count="5" type="cond" truecount="1" falsecount="1"/>
+      <line num="23" count="5" type="stmt"/>
+      <line num="28" count="4" type="stmt"/>
+      <line num="29" count="4" type="stmt"/>
+      <line num="30" count="4" type="stmt"/>
+      <line num="32" count="4" type="cond" truecount="5" falsecount="0"/>
+      <line num="33" count="3" type="stmt"/>
+      <line num="35" count="1" type="stmt"/>
+      <line num="39" count="2" type="stmt"/>
+    </file>
+  </project>
+</coverage>
