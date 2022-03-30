@@ -1,160 +1,93 @@
-<!--
-title: 'Serverless Framework Node Express API service backed by DynamoDB on AWS'
-description: 'This template demonstrates how to develop and deploy a simple Node Express API service backed by DynamoDB running on AWS Lambda using the traditional Serverless Framework.'
-layout: Doc
-framework: v2
-platform: AWS
-language: nodeJS
-priority: 1
-authorLink: 'https://github.com/serverless'
-authorName: 'Serverless, inc.'
-authorAvatar: 'https://avatars1.githubusercontent.com/u/13742415?s=200&v=4'
--->
+# Serverless Product API
 
-# Serverless Framework Node Express API on AWS
+This is a simple API created using AWS serverless technologies. It supports three endpoints- one for creating new products, reading a single product, and searching products by tags.
 
-This template demonstrates how to develop and deploy a simple Node Express API service, backed by DynamoDB database, running on AWS Lambda using the traditional Serverless Framework.
+## Technologies Used:
+ - NodeJS 14.x
+ - ExpressJS
+ - Jest
+ - Serverless Framework
+ - AWS Lambda
+ - AWS DynamoBD
+ - AWS API Gateway
 
 
-## Anatomy of the template
+<br/>
 
-This template configures a single function, `api`, which is responsible for handling all incoming requests thanks to the `httpApi` event. To learn more about `httpApi` event configuration options, please refer to [httpApi event docs](https://www.serverless.com/framework/docs/providers/aws/events/http-api/). As the event is configured in a way to accept all incoming requests, `express` framework is responsible for routing and handling requests internally. Implementation takes advantage of `serverless-http` package, which allows you to wrap existing `express` applications. To learn more about `serverless-http`, please refer to corresponding [GitHub repository](https://github.com/dougmoscrop/serverless-http). Additionally, it also handles provisioning of a DynamoDB database that is used for storing data about users. The `express` application exposes two endpoints, `POST /users` and `GET /user/{userId}`, which allow to create and retrieve users.
+# Endpoints:
+### POST - `"/products"`
+Create a new product. A unique ID is generated and used to write the request object to DynamoDB.
 
-## Usage
+Request:
 
-### Deployment
+    {
+      "name": "Test Product 2",
+      "price": 22.50,
+      "tags": [
+        "tag2",
+        "tag3"
+      ]
+    }
 
-Install dependencies with:
+Response:
 
-```
-npm install
-```
+    {
+      "id": "b101140f-ad56-4c81-8713-868e2edf178b",
+      "name": "Test Product 2",
+      "price": 22.5,
+      "tags": [
+        "tag2",
+        "tag3"
+      ]
+    }
 
-and then deploy with:
+### GET - `"/products/search?tags=tag1,tag2"`
+Retreives all product entries that contain all tags listed in the comma-separated strings in the querystring parameters.
 
-```
-serverless deploy
-```
+Request URL:
+    `"https://deployedAPI/products/search?tags=tag2,tag3"`
 
-After running deploy, you should see output similar to:
+Response:
 
-```bash
-Serverless: Packaging service...
-Serverless: Excluding development dependencies...
-Serverless: Creating Stack...
-Serverless: Checking Stack create progress...
-........
-Serverless: Stack create finished...
-Serverless: Uploading CloudFormation file to S3...
-Serverless: Uploading artifacts...
-Serverless: Uploading service aws-node-express-dynamodb-api.zip file to S3 (718.53 KB)...
-Serverless: Validating template...
-Serverless: Updating Stack...
-Serverless: Checking Stack update progress...
-....................................
-Serverless: Stack update finished...
-Service Information
-service: aws-node-express-dynamodb-api
-stage: dev
-region: us-east-1
-stack: aws-node-express-dynamodb-api-dev
-resources: 13
-api keys:
-  None
-endpoints:
-  ANY - https://xxxxxxx.execute-api.us-east-1.amazonaws.com/
-functions:
-  api: aws-node-express-dynamodb-api-dev-api
-layers:
-  None
-```
+    {
+      "_records": [
+        {
+          "id": "b101140f-ad56-4c81-8713-868e2edf178b",
+          "price": 22.5,
+          "name": "Test Product 2",
+          "tags": [
+            "tag2",
+            "tag3"
+          ]
+        },
+        {
+          "id": "f214a12c-e67c-47e9-a106-c37f2efb6fc3",
+          "price": 12.5,
+          "name": "Test Product",
+          "tags": [
+            "tag1",
+            "tag2",
+            "tag3"
+          ]
+        }
+      ]
+    }
 
-_Note_: In current form, after deployment, your API is public and can be invoked by anyone. For production deployments, you might want to configure an authorizer. For details on how to do that, refer to [`httpApi` event docs](https://www.serverless.com/framework/docs/providers/aws/events/http-api/). Additionally, in current configuration, the DynamoDB table will be removed when running `serverless remove`. To retain the DynamoDB table even after removal of the stack, add `DeletionPolicy: Retain` to its resource definition.
 
-### Invocation
+### GET - `"/products/:productId"`
+Retreives a single product using the Product's ID in the request URL.
 
-After successful deployment, you can create a new user by calling the corresponding endpoint:
+Example URL: `"https://deployedAPI.com/products/f214a12c-e67c-47e9-a106-c37f2efb6fc3"`
 
-```bash
-curl --request POST 'https://xxxxxx.execute-api.us-east-1.amazonaws.com/users' --header 'Content-Type: application/json' --data-raw '{"name": "John", "userId": "someUserId"}'
-```
+Response:
 
-Which should result in the following response:
-
-```bash
-{"userId":"someUserId","name":"John"}
-```
-
-You can later retrieve the user by `userId` by calling the following endpoint:
-
-```bash
-curl https://xxxxxxx.execute-api.us-east-1.amazonaws.com/users/someUserId
-```
-
-Which should result in the following response:
-
-```bash
-{"userId":"someUserId","name":"John"}
-```
-
-If you try to retrieve user that does not exist, you should receive the following response:
-
-```bash
-{"error":"Could not find user with provided \"userId\""}
-```
-
-### Local development
-
-It is also possible to emulate DynamoDB, API Gateway and Lambda locally using the `serverless-dynamodb-local` and `serverless-offline` plugins. In order to do that, run:
-
-```bash
-serverless plugin install -n serverless-dynamodb-local
-serverless plugin install -n serverless-offline
-```
-
-It will add both plugins to `devDependencies` in `package.json` file as well as will add it to `plugins` in `serverless.yml`. Make sure that `serverless-offline` is listed as last plugin in `plugins` section:
-
-```
-plugins:
-  - serverless-dynamodb-local
-  - serverless-offline
-```
-
-You should also add the following config to `custom` section in `serverless.yml`:
-
-```
-custom:
-  (...)
-  dynamodb:
-    start:
-      migrate: true
-    stages:
-      - dev
-```
-
-Additionally, we need to reconfigure `AWS.DynamoDB.DocumentClient` to connect to our local instance of DynamoDB. We can take advantage of `IS_OFFLINE` environment variable set by `serverless-offline` plugin and replace:
-
-```javascript
-const dynamoDbClient = new AWS.DynamoDB.DocumentClient();
-```
-
-with the following:
-
-```javascript
-const dynamoDbClientParams = {};
-if (process.env.IS_OFFLINE) {
-  dynamoDbClientParams.region = 'localhost'
-  dynamoDbClientParams.endpoint = 'http://localhost:8000'
-}
-const dynamoDbClient = new AWS.DynamoDB.DocumentClient(dynamoDbClientParams);
-```
-
-After that, running the following command with start both local API Gateway emulator as well as local instance of emulated DynamoDB:
-
-```bash
-serverless offline start
-```
-
-To learn more about the capabilities of `serverless-offline` and `serverless-dynamodb-local`, please refer to their corresponding GitHub repositories:
-- https://github.com/dherault/serverless-offline
-- https://github.com/99x/serverless-dynamodb-local
+    {
+      "id": "f214a12c-e67c-47e9-a106-c37f2efb6fc3",
+      "name": "Test Product",
+      "price": 12.5,
+      "tags": [
+        "tag1",
+        "tag2",
+        "tag3"
+      ]
+    }
