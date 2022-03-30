@@ -38,8 +38,10 @@ app.post('/products', async function (req, res) {
     await dynamoDbClient.put(params).promise();
     res.json({ id, name, price, tags });
   } catch (error) {
-    console.log(error);
-    res.status(500).json({ error: 'Could not create user' });
+    res.status(500).json({ 
+      'message': 'Could not create user',
+      'error': error
+    });
   }
 });
 
@@ -64,7 +66,6 @@ app.get('/products/search', async function (req, res) {
   try {
     const { Items } = await dynamoDbClient.scan(params).promise();
     let results = { '_records': [] };
-    console.log(Items);
 
     if (Items) {
       for (let product of Items) {
@@ -74,8 +75,10 @@ app.get('/products/search', async function (req, res) {
 
     res.status(200).json(results);
   } catch (error) {
-    console.log(error);
-    res.status(500).json({ error: 'could not retreive products' });
+    res.status(500).json({ 
+      'message': 'Could not retreive products',
+      'error': error
+    });
   }
 });
 
@@ -99,13 +102,13 @@ app.get('/products/:productId', async function (req, res) {
 
       res.status(200).json(product); 
     } else {
-      res
-        .status(404)
-        .json({ error: `Could not find product with provided productId: '${req.params.productId}'` });
+      res.status(404).json({ 'error': `Could not find product with provided productId: '${req.params.productId}'` });
     }
   } catch (error) {
-    console.log(error);
-    res.status(500).json({ error: 'Could not retreive product' });
+    res.status(500).json({ 
+      'message': 'Could not retreive product',
+      'error': error
+    });
   }
 });
 
