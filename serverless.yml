@@ -6,6 +6,8 @@ custom:
 
 plugins:
   - serverless-offline
+  - serverless-dynamodb-local
+  - serverless-plugin-typescript
 
 provider:
   name: aws
